@@ -8,13 +8,13 @@ Configuration & building
 ------------------------
 
 1. Download
-[source package with examples](https://github.com/DISTORTEC/distortosExamples/archive/master.zip) and extract it; 
+[source package with examples](https://github.com/DISTORTEC/distortosExamples/archive/master.zip) and extract it;
 2. Download [source package of distortos](https://github.com/DISTORTEC/distortos/archive/master.zip) and extract it
 somewhere inside examples;
 3. Configure path to sources of *distortos* in `DISTORTOS_PATH` variable in top-level `Makefile` (if you use
 *GNU Make*) or `Tuprules.lua` (if you use *tup*); You can skip this step if this path is `distortos/`, as this is
 the default value;
-4. Configure distortos - you can either create new configuration (with `make menuconfig`) or use and existing one;
+4. Configure distortos - you can either create new configuration (with `make menuconfig`) or use an existing one;
 5. Execute `make configure CONFIG_PATH=<path-to-distortosConfiguration.mk>` to select the configuration you
 created/chose above;
 6. Execute `make` (if you use *GNU Make*) or `tup` (if you use *tup*);
@@ -23,11 +23,14 @@ Alternatively you can replace steps 1 and 2 with just
 `git clone --recursive https://github.com/DISTORTEC/distortosExamples`. In such scenario you can also skip
 step 3. To update *distortos* submodule to latest version use `git submodule update --remote` command.
 
-#### Quick example
+If you downloaded versioned source package from [distortos.org](http://distortos.org/), then you may skip first three
+steps - releases already contain sources of *distortos* in default path.
+
+### Quick example
 
 Following commands may be executed in POSIX-compatible shell (e.g. *Bash*).
 
-##### 1. Download
+#### 1. Download
 
 Download and extract latest examples with latest *distortos*:
 
@@ -38,7 +41,18 @@ Download and extract latest examples with latest *distortos*:
     $ cd distortosExamples-master
     $ mv -T distortos-master/ distortos/
 
-##### 2. Configure
+or clone the repository:
+
+    $ git clone --recursive https://github.com/DISTORTEC/distortosExamples
+    $ cd distortosExamples
+
+or download and extract latest released project template:
+
+    $ wget http://distortos.org/files/distortosExamples-0.1.0.tar.xz
+    $ tar -xf distortosExamples-0.1.0.tar.xz
+    $ cd distortosExamples-0.1.0
+
+#### 2. Configure
 
 Either use one of existing configurations:
 
@@ -50,7 +64,7 @@ or create a new one from scratch:
     ... edit some options, save the configuration as distortosConfiguration.mk ...
     $ make configure
 
-##### 3. Build
+#### 3. Build
 
 Build the project with *make*:
 
@@ -60,7 +74,7 @@ or do the same with *tup*:
 
     $ tup
 
-##### 4. Edit configuration & rebuild
+#### 4. Edit configuration & rebuild
 
 To edit any option in the selected configuration just run *kconfig* tool again:
 
