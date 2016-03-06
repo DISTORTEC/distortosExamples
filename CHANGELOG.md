@@ -4,6 +4,14 @@ Change Log
 All notable changes to this project will be documented in this file. This project adheres to
 [Semantic Versioning](http://semver.org/).
 
+[Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20160226...HEAD)
+--------------------------------------------------------------------------
+
+### Added
+
+- Configuration for
+[NUCLEO-F103RB](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF259875?icmp=nucleo-ipf_pron_pr-nucleo_feb2014&sc=nucleoF103RB-pr) board with *STM32F1* chip.
+
 20160226 - 2016-02-26
 ---------------------
 
