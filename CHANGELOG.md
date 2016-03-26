@@ -13,6 +13,13 @@ All notable changes to this project will be documented in this file. This projec
 [NUCLEO-F103RB](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF259875?icmp=nucleo-ipf_pron_pr-nucleo_feb2014&sc=nucleoF103RB-pr) board with *STM32F1* chip and
 [NUCLEO-F429ZI](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF262637) board with *STM32F4* chip.
 
+### Changed
+
+- Change "Interrupt priority disabled in critical sections" (*ARCHITECTURE_ARMV7_M_KERNEL_BASEPRI*) option to 0 in all
+configurations, so they use *ARMv7-M*'s *PRIMASK* to disable all interrupts during critical sections. This is the new
+default setting in *distortos*, as this is a more conservative (and thus safer for a beginner) approach, which doesn't
+require any special configuration of interrupt priorities (default value is 0).
+
 20160226 - 2016-02-26
 ---------------------
 
