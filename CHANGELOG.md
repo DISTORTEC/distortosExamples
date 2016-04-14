@@ -9,9 +9,9 @@ All notable changes to this project will be documented in this file. This projec
 
 ### Added
 
-- Configuration for
-[NUCLEO-F103RB](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF259875?icmp=nucleo-ipf_pron_pr-nucleo_feb2014&sc=nucleoF103RB-pr) board with *STM32F1* chip and
-[NUCLEO-F429ZI](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF262637) board with *STM32F4* chip.
+- Configurations for
+[NUCLEO-F103RB](http://www.st.com/nucleoF103RB-pr) board with *STM32F1* chip and
+[NUCLEO-F429ZI](http://www.st.com/web/catalog/tools/PF262637) board with *STM32F4* chip.
 
 ### Changed
 
@@ -32,8 +32,7 @@ starting them, passing arguments to thread's function by reference and by value,
 dynamic threads: creating and starting them, passing arguments to thread's function by reference and by value, detaching
 them.
 - configurations for all boards supported by *distortos*:
-[32F429IDISCOVERY](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF259090),
-[NUCLEO-F401RE](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF260000?icmp=nucleo-ipf_pron_pr-nucleo_feb2014&sc=nucleoF401RE-pr)
-and [STM32F4DISCOVERY](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF252419).
+[32F429IDISCOVERY](http://www.st.com/web/catalog/tools/PF259090), [NUCLEO-F401RE](http://www.st.com/nucleoF401RE-pr) and
+[STM32F4DISCOVERY](http://www.st.com/web/catalog/tools/PF252419).
 - `README.md` file with some brief explanation and quick examples.
 - Integration with [Travis CI](https://travis-ci.org/DISTORTEC/distortosExamples) service.
