@@ -7,6 +7,8 @@
 # distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
+ifeq ($(CONFIG_STATICTHREADBLINKER_ENABLE),y)
+
 #-----------------------------------------------------------------------------------------------------------------------
 # final targets
 #-----------------------------------------------------------------------------------------------------------------------
@@ -58,3 +60,5 @@ $(LSS_$(d)): $(ELF_$(d)) $(d)Rules.mk
 
 size: $(ELF_$(d))
 all: size
+
+endif	# eq ($(CONFIG_STATICTHREADBLINKER_ENABLE),y)

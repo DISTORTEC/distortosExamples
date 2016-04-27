@@ -7,22 +7,26 @@
 -- distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 --
 
-CXXFLAGS += STANDARD_INCLUDES
-CXXFLAGS += CHIP_INCLUDES
-CXXFLAGS += BOARD_INCLUDES
+if CONFIG_DYNAMICTHREADBLINKER_ENABLE == "y" then
 
-tup.include(DISTORTOS_TOP .. "compile.lua")
+	CXXFLAGS += STANDARD_INCLUDES
+	CXXFLAGS += CHIP_INCLUDES
+	CXXFLAGS += BOARD_INCLUDES
+	
+	tup.include(DISTORTOS_TOP .. "compile.lua")
+	
+	local filename = OUTPUT .. tup.getrelativedir(TOP) .. "/dynamicThreadBlinker"
+	local elfFilename = filename .. ".elf"
+	local hexFilename = filename .. ".hex"
+	local binFilename = filename .. ".bin"
+	local dmpFilename = filename .. ".dmp"
+	local lssFilename = filename .. ".lss"
+	
+	link(elfFilename, OUTPUT .. "libdistortos.a", "<objects>", LDSCRIPT)
+	size(elfFilename)
+	hex(elfFilename, hexFilename)
+	bin(elfFilename, binFilename)
+	dmp(elfFilename, dmpFilename)
+	lss(elfFilename, lssFilename)
 
-local filename = OUTPUT .. tup.getrelativedir(TOP) .. "/dynamicThreadBlinker"
-local elfFilename = filename .. ".elf"
-local hexFilename = filename .. ".hex"
-local binFilename = filename .. ".bin"
-local dmpFilename = filename .. ".dmp"
-local lssFilename = filename .. ".lss"
-
-link(elfFilename, OUTPUT .. "libdistortos.a", "<objects>", LDSCRIPT)
-size(elfFilename)
-hex(elfFilename, hexFilename)
-bin(elfFilename, binFilename)
-dmp(elfFilename, dmpFilename)
-lss(elfFilename, lssFilename)
+end	-- if CONFIG_DYNAMICTHREADBLINKER_ENABLE == "y" then
