@@ -13,6 +13,8 @@ All notable changes to this project will be documented in this file. This projec
 [NUCLEO-F103RB](http://www.st.com/nucleoF103RB-pr) board with *STM32F1* chip and
 [NUCLEO-F429ZI](http://www.st.com/web/catalog/tools/PF262637) board with *STM32F4* chip.
 - Ability to selectively enable/disable examples via *Kconfig* menus.
+- *staticSoftwareTimerBlinker* example application, which demonstrates the most basic aspects of static software timers:
+creating and starting them, passing arguments to timers's function by reference and by value.
 
 ### Changed
 
