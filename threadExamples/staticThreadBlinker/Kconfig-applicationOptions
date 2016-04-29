@@ -11,4 +11,4 @@ config STATICTHREADBLINKER_ENABLE
 	bool "staticThreadBlinker example"
 	default n
 	help
-		Enables compilation of staticThreadBlinker examples
+		Enables compilation of staticThreadBlinker example

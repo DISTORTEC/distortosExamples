@@ -11,4 +11,4 @@ config DYNAMICTHREADBLINKER_ENABLE
 	bool "dynamicThreadBlinker example"
 	default n
 	help
-		Enables compilation of dynamicThreadBlinker examples
+		Enables compilation of dynamicThreadBlinker example
