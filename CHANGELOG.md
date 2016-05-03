@@ -4,8 +4,8 @@ Change Log
 All notable changes to this project will be documented in this file. This project adheres to
 [Semantic Versioning](http://semver.org/).
 
-[Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20160226...HEAD)
---------------------------------------------------------------------------
+[20160503](https://github.com/DISTORTEC/distortosExamples/compare/v20160226...v20160503) - 2016-05-03
+-----------------------------------------------------------------------------------------------------
 
 ### Added
 
