@@ -13,11 +13,12 @@ ifeq ($(CONFIG_STATICSOFTWARETIMERBLINKER_ENABLE),y)
 # final targets
 #-----------------------------------------------------------------------------------------------------------------------
 
-ELF_$(d) := $(OUTPUT)$(d)staticSoftwareTimerBlinker.elf
-HEX_$(d) := $(ELF_$(d):%.elf=%.hex)
-BIN_$(d) := $(ELF_$(d):%.elf=%.bin)
-DMP_$(d) := $(ELF_$(d):%.elf=%.dmp)
-LSS_$(d) := $(ELF_$(d):%.elf=%.lss)
+FILENAME_$(d) := $(OUTPUT)$(d)staticSoftwareTimerBlinker
+ELF_$(d) := $(FILENAME_$(d)).elf
+HEX_$(d) := $(FILENAME_$(d)).hex
+BIN_$(d) := $(FILENAME_$(d)).bin
+DMP_$(d) := $(FILENAME_$(d)).dmp
+LSS_$(d) := $(FILENAME_$(d)).lss
 
 #-----------------------------------------------------------------------------------------------------------------------
 # add final targets to list of generated files
