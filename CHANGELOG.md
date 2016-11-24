@@ -3,6 +3,11 @@ Change Log
 
 All notable changes to this project will be documented in this file.
 
+[20161124](https://github.com/DISTORTEC/distortosExamples/compare/v20160503...v20161124) - 2016-11-24
+-----------------------------------------------------------------------------------------------------
+
+This is just a snapshot with version *0.3.0* of *distortos*.
+
 [20160503](https://github.com/DISTORTEC/distortosExamples/compare/v20160226...v20160503) - 2016-05-03
 -----------------------------------------------------------------------------------------------------
 

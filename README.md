@@ -48,9 +48,9 @@ or clone the repository:
 
 or download and extract latest released project template:
 
-    $ wget http://distortos.org/files/distortosExamples-20160503.tar.xz
-    $ tar -xf distortosExamples-20160503.tar.xz
-    $ cd distortosExamples-20160503
+    $ wget http://distortos.org/files/distortosExamples-20161124.tar.xz
+    $ tar -xf distortosExamples-20161124.tar.xz
+    $ cd distortosExamples-20161124
 
 #### 2. Configure
 
