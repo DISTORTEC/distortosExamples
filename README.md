@@ -1,8 +1,7 @@
 distortosExamples [![Build Status](https://travis-ci.org/DISTORTEC/distortosExamples.svg?branch=master)](https://travis-ci.org/DISTORTEC/distortosExamples)
 ==========================
 
-Examples for [distortos](http://distortos.org/) - an advanced real-time operating system for deeply embedded
-targets.
+Examples for [distortos](http://distortos.org/) - object-oriented C++ RTOS for microcontrollers
 
 Configuration & building
 ------------------------
