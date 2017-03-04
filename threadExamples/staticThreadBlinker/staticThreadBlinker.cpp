@@ -2,7 +2,7 @@
  * \file
  * \brief staticThreadBlinker example application
  *
- * \author Copyright (C) 2016 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+ * \author Copyright (C) 2016-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
  *
  * \par License
  * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
@@ -11,13 +11,13 @@
 
 #include "distortos/distortosConfiguration.h"
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#if defined(CONFIG_BOARD_LEDS_ENABLE)
 
 #include "distortos/board/leds.hpp"
 
 #include "distortos/chip/ChipOutputPin.hpp"
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
 
 #include "distortos/StaticThread.hpp"
 #include "distortos/ThisThread.hpp"
@@ -29,7 +29,7 @@ namespace
 | local functions
 +---------------------------------------------------------------------------------------------------------------------*/
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#if defined(CONFIG_BOARD_LEDS_ENABLE)
 
 /**
  * \brief LED blinking function
@@ -49,7 +49,7 @@ void ledBlinkerFunction(distortos::devices::OutputPin& led, const std::chrono::m
 	}
 }
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
 
 /**
  * \brief Boolean variable "blinking" function
