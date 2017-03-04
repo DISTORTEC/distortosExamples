@@ -2,7 +2,7 @@
  * \file
  * \brief dynamicThreadBlinker example application
  *
- * \author Copyright (C) 2016 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+ * \author Copyright (C) 2016-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
  *
  * \par License
  * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
@@ -11,13 +11,13 @@
 
 #include "distortos/distortosConfiguration.h"
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#if defined(CONFIG_BOARD_LEDS_ENABLE)
 
 #include "distortos/board/leds.hpp"
 
 #include "distortos/chip/ChipOutputPin.hpp"
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
 
 #include "distortos/DynamicThread.hpp"
 #include "distortos/ThisThread.hpp"
@@ -29,7 +29,7 @@ namespace
 | local functions
 +---------------------------------------------------------------------------------------------------------------------*/
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#if defined(CONFIG_BOARD_LEDS_ENABLE)
 
 /**
  * \brief LED blinking function
@@ -49,7 +49,7 @@ void ledBlinkerFunction(distortos::devices::OutputPin& led, const std::chrono::m
 	}
 }
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
 
 /**
  * \brief Boolean variable "blinking" function
@@ -86,8 +86,8 @@ void variableBlinkerFunction(bool& variable, const std::chrono::milliseconds per
  *
  * If the configured board has no LEDs or if they are not enabled in the configuration, only one dummy thread is
  * created - it "blinks" a boolean variable instead of a real LED. Otherwise up to four additional threads are created
- * (but no more than the number of LEDs on the board - CONFIG_BOARD_TOTAL_LEDS) - each one blinks its own LED (which was
- * passed to the thread's function by reference) with provided period (passed by value). The periods of blinking are
+ * (but no more than the number of LEDs on the board - distortos::board::totalLeds) - each one blinks its own LED (which
+ * was passed to the thread's function by reference) with provided period (passed by value). The periods of blinking are
  * slightly different for each thread, so if there are multiple LEDs they are not in sync with each other. The periods
  * are actually prime numbers, so they create very long "global" period (in which the whole pattern repeats).
  *
@@ -106,7 +106,7 @@ int main()
 	distortos::makeAndStartDynamicThread({1024, 1}, variableBlinkerFunction, std::ref(variable),
 			std::chrono::milliseconds{401}).detach();
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#if defined(CONFIG_BOARD_LEDS_ENABLE)
 
 	static const std::array<std::chrono::milliseconds, 4> periods
 	{
@@ -116,14 +116,15 @@ int main()
 			std::chrono::milliseconds{379},
 	};
 
-	constexpr size_t totalThreads {periods.size() < CONFIG_BOARD_TOTAL_LEDS ? periods.size() : CONFIG_BOARD_TOTAL_LEDS};
+	constexpr size_t totalThreads {periods.size() < distortos::board::totalLeds ?
+			periods.size() : distortos::board::totalLeds};
 	// create, immediately start and immediately detach dynamic thread with 1024 bytes of stack, low priority (1),
 	// ledBlinkerFunction() will get its own LED by reference and period by value
 	for (size_t i {}; i < totalThreads; ++i)
 		distortos::makeAndStartDynamicThread({1024, 1}, ledBlinkerFunction, std::ref(distortos::board::leds[i]),
 				periods[i]).detach();
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
 
 	while (1)
 		distortos::ThisThread::sleepFor(std::chrono::hours{1});
