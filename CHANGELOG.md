@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Enabled function context checking and all stack overflow checks in configuration files.
 - Changed number of queued signals and signal actions for `main()` thread to 8 in all `distortosConfiguration.mk` files.
 - Reduced size of stack for interrupts to 1kB in all configurations.
+- Replace all uses of `CONFIG_BOARD_TOTAL_LEDS` macro with `DISTORTOS_BOARD_TOTAL_LEDS`.
 
 [20161124](https://github.com/DISTORTEC/distortosExamples/compare/v20160503...v20161124) - 2016-11-24
 -----------------------------------------------------------------------------------------------------

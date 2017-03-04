@@ -86,8 +86,8 @@ void variableBlinkerFunction(bool& variable, const std::chrono::milliseconds per
  *
  * If the configured board has no LEDs or if they are not enabled in the configuration, only one dummy thread is
  * created - it "blinks" a boolean variable instead of a real LED. Otherwise up to four additional threads are created
- * (but no more than the number of LEDs on the board - CONFIG_BOARD_TOTAL_LEDS) - each one blinks its own LED (which was
- * passed to the thread's function by reference) with provided period (passed by value). The periods of blinking are
+ * (but no more than the number of LEDs on the board - DISTORTOS_BOARD_TOTAL_LEDS) - each one blinks its own LED (which
+ * was passed to the thread's function by reference) with provided period (passed by value). The periods of blinking are
  * slightly different for each thread, so if there are multiple LEDs they are not in sync with each other. The periods
  * are actually prime numbers, so they create very long "global" period (in which the whole pattern repeats).
  *
@@ -106,43 +106,43 @@ int main()
 	auto variableBlinkerThread = distortos::makeAndStartStaticThread<1024>(1, variableBlinkerFunction,
 			std::ref(variable), std::chrono::milliseconds{401});
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#if defined(CONFIG_BOARD_LEDS_ENABLE) && DISTORTOS_BOARD_TOTAL_LEDS >= 1
 
 	// create and immediately start static thread with 1024 bytes of stack, low priority (1), ledBlinkerFunction() will
 	// get its own LED by reference and period by value
 	auto ledBlinkerThread0 = distortos::makeAndStartStaticThread<1024>(1, ledBlinkerFunction,
 			std::ref(distortos::board::leds[0]), std::chrono::milliseconds{397});
 
-#	if CONFIG_BOARD_TOTAL_LEDS >= 2
+#	if DISTORTOS_BOARD_TOTAL_LEDS >= 2
 
 	auto ledBlinkerThread1 = distortos::makeAndStartStaticThread<1024>(1, ledBlinkerFunction,
 			std::ref(distortos::board::leds[1]), std::chrono::milliseconds{389});
 
-#		if CONFIG_BOARD_TOTAL_LEDS >= 3
+#		if DISTORTOS_BOARD_TOTAL_LEDS >= 3
 
 	auto ledBlinkerThread2 = distortos::makeAndStartStaticThread<1024>(1, ledBlinkerFunction,
 			std::ref(distortos::board::leds[2]), std::chrono::milliseconds{383});
 
-#			if CONFIG_BOARD_TOTAL_LEDS >= 4
+#			if DISTORTOS_BOARD_TOTAL_LEDS >= 4
 
 	auto ledBlinkerThread3 = distortos::makeAndStartStaticThread<1024>(1, ledBlinkerFunction,
 			std::ref(distortos::board::leds[3]), std::chrono::milliseconds{379});
 
 	ledBlinkerThread3.join();
 
-#			endif	// CONFIG_BOARD_TOTAL_LEDS >= 4
+#			endif	// DISTORTOS_BOARD_TOTAL_LEDS >= 4
 
 	ledBlinkerThread2.join();
 
-#		endif	// CONFIG_BOARD_TOTAL_LEDS >= 3
+#		endif	// DISTORTOS_BOARD_TOTAL_LEDS >= 3
 
 	ledBlinkerThread1.join();
 
-#	endif	// CONFIG_BOARD_TOTAL_LEDS >= 2
+#	endif	// DISTORTOS_BOARD_TOTAL_LEDS >= 2
 
 	ledBlinkerThread0.join();
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && CONFIG_BOARD_TOTAL_LEDS >= 1
+#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && DISTORTOS_BOARD_TOTAL_LEDS >= 1
 
 	variableBlinkerThread.join();
 
