@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 [Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20161124...HEAD)
 -------------------------------------------------------------------------------------
 
+### Added
+
+- Configuration for [32F746GDISCOVERY](http://www.st.com/en/evaluation-tools/32f746gdiscovery.html) board with *STM32F7*
+chip.
+
 ### Changed
 
 - Enabled function context checking and all stack overflow checks in configuration files.
