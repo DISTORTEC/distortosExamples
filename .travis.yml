@@ -24,11 +24,17 @@ cache:
 # use minimal environment
 language: generic
 
+matrix:
+    include:
+        - env: SUBSTAGE="build 5"
+        - env: SUBSTAGE="build 6"
+        - env: SUBSTAGE="build 7"
+
 install:
-    - "XZ_OPT=\"-0 -T 0 -v\" ./distortos/scripts/travis-ci.sh install"
+    - "XZ_OPT=\"-0 -T 0 -v\" ./distortos/scripts/travis-ci.sh install ${SUBSTAGE}"
 
 script:
-    - "./distortos/scripts/travis-ci.sh script"
+    - "./distortos/scripts/travis-ci.sh script ${SUBSTAGE} configurations"
 
 after_failure:
     - "echo \"********** /tmp/stdout.log\""
