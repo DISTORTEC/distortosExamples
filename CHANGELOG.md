@@ -3,6 +3,13 @@ Change Log
 
 All notable changes to this project will be documented in this file.
 
+[Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20170311...HEAD)
+-------------------------------------------------------------------------------------
+
+### Added
+
+- Configuration for [NUCLEO-L073RZ](http://www.st.com/en/evaluation-tools/nucleo-l073rz.html) board with *STM32L0* chip.
+
 [20170311](https://github.com/DISTORTEC/distortosExamples/compare/v20161124...v20170311) - 2017-03-11
 -----------------------------------------------------------------------------------------------------
 
