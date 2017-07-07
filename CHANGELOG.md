@@ -16,8 +16,9 @@ All notable changes to this project will be documented in this file.
 executable's (`*.elf` file's) dependencies from `LDSCRIPT` to `LDSCRIPTS` if using *make*
 ([example](https://github.com/DISTORTEC/distortosExamples/commit/38b2313b9c069555effce6ccd580a34085d4bd97#diff-1e0fa3f55ffb3b1a7cfc409e28519f63))
 or to `table.unpack(LDSCRIPTS)` if using *tup*
-([example](https://github.com/DISTORTEC/distortosExamples/commit/38b2313b9c069555effce6ccd580a34085d4bd97#diff-93021938e5ac116189c2a5d29899c546)),
-or just arrange for both linker scripts to be used by linker, otherwise the linking will fail with
+([example](https://github.com/DISTORTEC/distortosExamples/commit/38b2313b9c069555effce6ccd580a34085d4bd97#diff-93021938e5ac116189c2a5d29899c546)).
+Another option is to simply add `$(SYMBOLS_LD)` for *make* or `SYMBOLS_LD` for *tup* as dependency of `*.elf`
+executable. Without such changes the linking will fail with
 ``undefined symbol `__main_stack_size' referenced in expression`` error message.
 
 [20170311](https://github.com/DISTORTEC/distortosExamples/compare/v20161124...v20170311) - 2017-03-11
