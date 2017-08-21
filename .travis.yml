@@ -7,7 +7,8 @@
 # distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-# use container-based infrastructure
+# use "trusty", container-based infrastructure
+dist: trusty
 sudo: false
 
 # texinfo is needed to build bleeding-edge-toolchain
@@ -16,10 +17,6 @@ addons:
         packages:
             - texinfo
             - texlive
-
-cache:
-    directories:
-        - "${HOME}/cache"
 
 # use minimal environment
 language: generic
@@ -31,13 +28,7 @@ matrix:
         - env: SUBSTAGE="build 7"
 
 install:
-    - "XZ_OPT=\"-0 -T 0 -v\" ./distortos/scripts/travis-ci.sh install ${SUBSTAGE}"
+    - "./distortos/scripts/travis-ci.sh install ${SUBSTAGE}"
 
 script:
     - "./distortos/scripts/travis-ci.sh script ${SUBSTAGE} configurations"
-
-after_failure:
-    - "echo \"********** /tmp/stdout.log\""
-    - "tail -n 1000 /tmp/stdout.log"
-    - "echo \"********** /tmp/stderr.log\""
-    - "tail -n 1000 /tmp/stderr.log"
