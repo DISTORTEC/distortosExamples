@@ -1,7 +1,7 @@
 --
 -- file: Tupfile.lua
 --
--- author: Copyright (C) 2014-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+-- author: Copyright (C) 2014-2016 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
 --
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
 -- distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -22,7 +22,7 @@ if CONFIG_STATICTHREADBLINKER_ENABLE == "y" then
 	local dmpFilename = filename .. ".dmp"
 	local lssFilename = filename .. ".lss"
 	
-	link(elfFilename, OUTPUT .. "libdistortos.a", "<objects>", table.unpack(LDSCRIPTS))
+	link(elfFilename, OUTPUT .. "libdistortos.a", "<objects>", LDSCRIPT)
 	size(elfFilename)
 	hex(elfFilename, hexFilename)
 	bin(elfFilename, binFilename)
