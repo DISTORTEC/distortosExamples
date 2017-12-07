@@ -55,7 +55,7 @@ or download and extract latest released project template:
 
 Either use one of existing configurations:
 
-    $ make configure CONFIG_PATH=configurations/STM32F4DISCOVERY
+    $ make configure CONFIG_PATH=configurations/ST_STM32F4DISCOVERY
 
 or create a new one from scratch:
 
