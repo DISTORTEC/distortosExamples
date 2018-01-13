@@ -3,6 +3,11 @@ Change Log
 
 All notable changes to this project will be documented in this file.
 
+[Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20170914...HEAD)
+-------------------------------------------------------------------------------------
+
+- Configuration for [NUCLEO-L476RG](http://www.st.com/en/evaluation-tools/nucleo-l476rg.html) board with *STM32L4* chip.
+
 [20170914](https://github.com/DISTORTEC/distortosExamples/compare/v20170311...v20170914) - 2017-09-14
 -----------------------------------------------------------------------------------------------------
 
