@@ -6,7 +6,18 @@ All notable changes to this project will be documented in this file.
 [Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20170914...HEAD)
 -------------------------------------------------------------------------------------
 
+### Added
+
 - Configuration for [NUCLEO-L476RG](http://www.st.com/en/evaluation-tools/nucleo-l476rg.html) board with *STM32L4* chip.
+- *CMake*-based build system. At this moment all configuration is still done with *Kconfig* - *CMake* loads selected
+`distortosConfiguration.mk` and only deals with compilation. Typical use case involves following steps: select
+configuration with `make configure CONFIG_PATH=...`, create output folder of your choice (`mkdir output`) and enter it
+(`cd output`), configure compilation with
+`cmake .. -DCMAKE_TOOLCHAIN_FILE=../distortos/cmake/Toolchain-arm-none-eabi.cmake` and finally start the build with
+`make`. You can obviously use other
+[*CMake* generators](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html), e.g. *Ninja*, *Eclipse CDT4*
+project, ... *CMake*-based build system will only support configurations with proper board, i.e. "Custom board" choice
+for "Board" in *Kconfig* is not supported.
 
 [20170914](https://github.com/DISTORTEC/distortosExamples/compare/v20170311...v20170914) - 2017-09-14
 -----------------------------------------------------------------------------------------------------
@@ -42,7 +53,7 @@ This is just a snapshot with version *0.3.0* of *distortos*.
 
 ### Added
 
-- Configurations for [NUCLEO-F091RC](http://www.st.com/web/catalog/tools/PF260944) board with *STM32F0* chip, 
+- Configurations for [NUCLEO-F091RC](http://www.st.com/web/catalog/tools/PF260944) board with *STM32F0* chip,
 [NUCLEO-F103RB](http://www.st.com/nucleoF103RB-pr) board with *STM32F1* chip and
 [NUCLEO-F429ZI](http://www.st.com/web/catalog/tools/PF262637) board with *STM32F4* chip.
 - Ability to selectively enable/disable examples via *Kconfig* menus.
