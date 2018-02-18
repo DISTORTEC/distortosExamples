@@ -10,13 +10,12 @@ Configuration & building
 [source package with examples](https://github.com/DISTORTEC/distortosExamples/archive/master.zip) and extract it;
 2. Download [source package of distortos](https://github.com/DISTORTEC/distortos/archive/master.zip) and extract it
 somewhere inside examples;
-3. Configure path to sources of *distortos* in `DISTORTOS_PATH` variable in top-level `Makefile` (if you use
-*GNU Make*) or `Tuprules.lua` (if you use *tup*); You can skip this step if this path is `distortos/`, as this is
-the default value;
+3. Configure path to sources of *distortos* in `DISTORTOS_PATH` variable in top-level `Makefile`; You can skip this step
+if this path is `distortos/`, as this is the default value;
 4. Configure distortos - you can either create new configuration (with `make menuconfig`) or use an existing one;
 5. Execute `make configure CONFIG_PATH=<path-to-distortosConfiguration.mk>` to select the configuration you
 created/chose above;
-6. Execute `make` (if you use *GNU Make*) or `tup` (if you use *tup*);
+6. Execute `make`;
 
 Alternatively you can replace steps 1 and 2 with just
 `git clone --recursive https://github.com/DISTORTEC/distortosExamples`. In such scenario you can also skip
@@ -69,10 +68,6 @@ Build the project with *make*:
 
     $ make
 
-or do the same with *tup*:
-
-    $ tup
-
 #### 4. Edit configuration & rebuild
 
 To edit any option in the selected configuration just run *kconfig* tool again:
@@ -83,7 +78,3 @@ To edit any option in the selected configuration just run *kconfig* tool again:
 You can rebuild the project immediatelly by running *make*:
 
     $ make
-
-or *tup*:
-
-    $ tup
