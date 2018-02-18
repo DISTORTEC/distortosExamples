@@ -1,6 +1,3 @@
-# tup database
-.tup/
-
 # configuration output
 selectedConfiguration.mk
 
@@ -21,3 +18,6 @@ documentation/html/
 
 # other
 .gdbinit
+__pycache__
+*.pyc
+.~lock.*
