@@ -18,7 +18,7 @@ set_target_properties(staticThreadBlinker.elf PROPERTIES
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(staticThreadBlinker.elf
 		distortos::distortos
-		-Wl,-Map=${CMAKE_CURRENT_BINARY_DIR}/staticThreadBlinker.map)
+		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/staticThreadBlinker.map")
 
 bin(staticThreadBlinker.elf staticThreadBlinker.bin)
 dmp(staticThreadBlinker.elf staticThreadBlinker.dmp)
