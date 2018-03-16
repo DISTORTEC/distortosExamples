@@ -86,7 +86,7 @@ void variableBlinkerFunction(bool& variable, const std::chrono::milliseconds per
  *
  * If the configured board has no LEDs or if they are not enabled in the configuration, only one dummy thread is
  * created - it "blinks" a boolean variable instead of a real LED. Otherwise up to four additional threads are created
- * (but no more than the number of LEDs on the board - distortos::board::totalLeds) - each one blinks its own LED (which
+ * (but no more than the number of LEDs on the board - distortos::board::ledsCount) - each one blinks its own LED (which
  * was passed to the thread's function by reference) with provided period (passed by value). The periods of blinking are
  * slightly different for each thread, so if there are multiple LEDs they are not in sync with each other. The periods
  * are actually prime numbers, so they create very long "global" period (in which the whole pattern repeats).
@@ -116,11 +116,11 @@ int main()
 			std::chrono::milliseconds{379},
 	};
 
-	constexpr size_t totalThreads {periods.size() < distortos::board::totalLeds ?
-			periods.size() : distortos::board::totalLeds};
+	constexpr size_t threadsCount {periods.size() < distortos::board::ledsCount ?
+			periods.size() : distortos::board::ledsCount};
 	// create, immediately start and immediately detach dynamic thread with 1024 bytes of stack, low priority (1),
 	// ledBlinkerFunction() will get its own LED by reference and period by value
-	for (size_t i {}; i < totalThreads; ++i)
+	for (size_t i {}; i < threadsCount; ++i)
 		distortos::makeAndStartDynamicThread({1024, 1}, ledBlinkerFunction, std::ref(distortos::board::leds[i]),
 				periods[i]).detach();
 

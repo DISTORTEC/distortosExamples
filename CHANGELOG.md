@@ -19,6 +19,11 @@ configuration with `make configure CONFIG_PATH=...`, create output folder of you
 project, ... *CMake*-based build system will only support configurations with proper board, i.e. "Custom board" choice
 for "Board" in *Kconfig* is not supported.
 
+### Changed
+
+- Replace all uses of `distortos::board::totalLeds` constant and `DISTORTOS_BOARD_TOTAL_LEDS` macro with
+`distortos::board::ledsCount` and `DISTORTOS_BOARD_LEDS_COUNT`.
+
 ### Removed
 
 - Removed *tup* build infrastructure - *tup* is no longer supported for building *distortos*.
