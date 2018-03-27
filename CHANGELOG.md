@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 - Configurations for [NUCLEO-L432KC](http://www.st.com/en/evaluation-tools/nucleo-l432kc.html) and
 [NUCLEO-L476RG](http://www.st.com/en/evaluation-tools/nucleo-l476rg.html) boards with *STM32L4* chips.
+- Configuration for [NUCLEO-F446RE](http://www.st.com/en/evaluation-tools/nucleo-f446re.html) board with *STM32F4* chip.
 - *CMake*-based build system. At this moment all configuration is still done with *Kconfig* - *CMake* loads selected
 `distortosConfiguration.mk` and only deals with compilation. Typical use case involves following steps: select
 configuration with `make configure CONFIG_PATH=...`, create output folder of your choice (`mkdir output`) and enter it
