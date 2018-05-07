@@ -18,6 +18,7 @@ set_target_properties(dynamicThreadBlinker.elf PROPERTIES
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(dynamicThreadBlinker.elf
 		distortos::distortos
+		distortos::allCxxFlags
 		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/dynamicThreadBlinker.map")
 
 bin(dynamicThreadBlinker.elf dynamicThreadBlinker.bin)

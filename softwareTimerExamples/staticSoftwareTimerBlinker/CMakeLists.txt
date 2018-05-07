@@ -18,6 +18,7 @@ set_target_properties(staticSoftwareTimerBlinker.elf PROPERTIES
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(staticSoftwareTimerBlinker.elf
 		distortos::distortos
+		distortos::allCxxFlags
 		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/staticSoftwareTimerBlinker.map")
 
 bin(staticSoftwareTimerBlinker.elf staticSoftwareTimerBlinker.bin)
