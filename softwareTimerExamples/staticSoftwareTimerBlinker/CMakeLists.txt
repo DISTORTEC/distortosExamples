@@ -11,18 +11,18 @@
 # staticSoftwareTimerBlinker application
 #-----------------------------------------------------------------------------------------------------------------------
 
-add_executable(staticSoftwareTimerBlinker.elf
+add_executable(staticSoftwareTimerBlinker
 		staticSoftwareTimerBlinker.cpp)
-set_target_properties(staticSoftwareTimerBlinker.elf PROPERTIES
+set_target_properties(staticSoftwareTimerBlinker PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED ON)
-target_link_libraries(staticSoftwareTimerBlinker.elf
+target_link_libraries(staticSoftwareTimerBlinker
 		distortos::distortos
 		distortos::allCxxFlags
 		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/staticSoftwareTimerBlinker.map")
 
-bin(staticSoftwareTimerBlinker.elf staticSoftwareTimerBlinker.bin)
-dmp(staticSoftwareTimerBlinker.elf staticSoftwareTimerBlinker.dmp)
-hex(staticSoftwareTimerBlinker.elf staticSoftwareTimerBlinker.hex)
-lss(staticSoftwareTimerBlinker.elf staticSoftwareTimerBlinker.lss)
-size(staticSoftwareTimerBlinker.elf)
+bin(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.bin)
+dmp(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.dmp)
+hex(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.hex)
+lss(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.lss)
+size(staticSoftwareTimerBlinker)

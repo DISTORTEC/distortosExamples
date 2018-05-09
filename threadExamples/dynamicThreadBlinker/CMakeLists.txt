@@ -11,18 +11,18 @@
 # dynamicThreadBlinker application
 #-----------------------------------------------------------------------------------------------------------------------
 
-add_executable(dynamicThreadBlinker.elf
+add_executable(dynamicThreadBlinker
 		dynamicThreadBlinker.cpp)
-set_target_properties(dynamicThreadBlinker.elf PROPERTIES
+set_target_properties(dynamicThreadBlinker PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED ON)
-target_link_libraries(dynamicThreadBlinker.elf
+target_link_libraries(dynamicThreadBlinker
 		distortos::distortos
 		distortos::allCxxFlags
 		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/dynamicThreadBlinker.map")
 
-bin(dynamicThreadBlinker.elf dynamicThreadBlinker.bin)
-dmp(dynamicThreadBlinker.elf dynamicThreadBlinker.dmp)
-hex(dynamicThreadBlinker.elf dynamicThreadBlinker.hex)
-lss(dynamicThreadBlinker.elf dynamicThreadBlinker.lss)
-size(dynamicThreadBlinker.elf)
+bin(dynamicThreadBlinker dynamicThreadBlinker.bin)
+dmp(dynamicThreadBlinker dynamicThreadBlinker.dmp)
+hex(dynamicThreadBlinker dynamicThreadBlinker.hex)
+lss(dynamicThreadBlinker dynamicThreadBlinker.lss)
+size(dynamicThreadBlinker)

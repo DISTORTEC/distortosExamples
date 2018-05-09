@@ -11,18 +11,18 @@
 # staticThreadBlinker application
 #-----------------------------------------------------------------------------------------------------------------------
 
-add_executable(staticThreadBlinker.elf
+add_executable(staticThreadBlinker
 		staticThreadBlinker.cpp)
-set_target_properties(staticThreadBlinker.elf PROPERTIES
+set_target_properties(staticThreadBlinker PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED ON)
-target_link_libraries(staticThreadBlinker.elf
+target_link_libraries(staticThreadBlinker
 		distortos::distortos
 		distortos::allCxxFlags
 		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/staticThreadBlinker.map")
 
-bin(staticThreadBlinker.elf staticThreadBlinker.bin)
-dmp(staticThreadBlinker.elf staticThreadBlinker.dmp)
-hex(staticThreadBlinker.elf staticThreadBlinker.hex)
-lss(staticThreadBlinker.elf staticThreadBlinker.lss)
-size(staticThreadBlinker.elf)
+bin(staticThreadBlinker staticThreadBlinker.bin)
+dmp(staticThreadBlinker staticThreadBlinker.dmp)
+hex(staticThreadBlinker staticThreadBlinker.hex)
+lss(staticThreadBlinker staticThreadBlinker.lss)
+size(staticThreadBlinker)
