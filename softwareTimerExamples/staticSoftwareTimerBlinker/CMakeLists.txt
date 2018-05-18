@@ -16,13 +16,14 @@ add_executable(staticSoftwareTimerBlinker
 set_target_properties(staticSoftwareTimerBlinker PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED ON)
-target_link_libraries(staticSoftwareTimerBlinker
+target_link_libraries(staticSoftwareTimerBlinker PRIVATE
 		distortos::distortos
 		distortos::allCxxFlags
 		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/staticSoftwareTimerBlinker.map")
+distortosTargetLinkerScripts(staticSoftwareTimerBlinker $ENV{DISTORTOS_LINKER_SCRIPT})
 
-bin(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.bin)
-dmp(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.dmp)
-hex(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.hex)
-lss(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.lss)
-size(staticSoftwareTimerBlinker)
+distortosBin(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.bin)
+distortosDmp(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.dmp)
+distortosHex(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.hex)
+distortosLss(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.lss)
+distortosSize(staticSoftwareTimerBlinker)
