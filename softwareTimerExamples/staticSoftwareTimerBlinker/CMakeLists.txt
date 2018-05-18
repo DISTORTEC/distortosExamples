@@ -18,12 +18,12 @@ set_target_properties(staticSoftwareTimerBlinker PROPERTIES
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(staticSoftwareTimerBlinker PRIVATE
 		distortos::distortos
-		distortos::allCxxFlags
-		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/staticSoftwareTimerBlinker.map")
+		distortos::allCxxFlags)
 distortosTargetLinkerScripts(staticSoftwareTimerBlinker $ENV{DISTORTOS_LINKER_SCRIPT})
 
 distortosBin(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.bin)
 distortosDmp(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.dmp)
 distortosHex(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.hex)
 distortosLss(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.lss)
+distortosMap(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.map)
 distortosSize(staticSoftwareTimerBlinker)

@@ -18,12 +18,12 @@ set_target_properties(dynamicThreadBlinker PROPERTIES
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(dynamicThreadBlinker PRIVATE
 		distortos::distortos
-		distortos::allCxxFlags
-		-Xlinker -Map="${CMAKE_CURRENT_BINARY_DIR}/dynamicThreadBlinker.map")
+		distortos::allCxxFlags)
 distortosTargetLinkerScripts(dynamicThreadBlinker $ENV{DISTORTOS_LINKER_SCRIPT})
 
 distortosBin(dynamicThreadBlinker dynamicThreadBlinker.bin)
 distortosDmp(dynamicThreadBlinker dynamicThreadBlinker.dmp)
 distortosHex(dynamicThreadBlinker dynamicThreadBlinker.hex)
 distortosLss(dynamicThreadBlinker dynamicThreadBlinker.lss)
+distortosMap(dynamicThreadBlinker dynamicThreadBlinker.map)
 distortosSize(dynamicThreadBlinker)
