@@ -3,8 +3,8 @@ Change Log
 
 All notable changes to this project will be documented in this file.
 
-[Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20170914...HEAD)
--------------------------------------------------------------------------------------
+[20180701](https://github.com/DISTORTEC/distortosExamples/compare/v20170914...v20180701) - 2018-07-01
+-----------------------------------------------------------------------------------------------------
 
 ### Added
 
