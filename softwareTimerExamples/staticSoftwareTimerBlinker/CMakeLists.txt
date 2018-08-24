@@ -17,8 +17,7 @@ set_target_properties(staticSoftwareTimerBlinker PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(staticSoftwareTimerBlinker PRIVATE
-		distortos::distortos
-		distortos::allCxxFlags)
+		distortos::distortos)
 distortosTargetLinkerScripts(staticSoftwareTimerBlinker $ENV{DISTORTOS_LINKER_SCRIPT})
 
 distortosBin(staticSoftwareTimerBlinker staticSoftwareTimerBlinker.bin)

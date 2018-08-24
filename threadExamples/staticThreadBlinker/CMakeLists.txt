@@ -17,8 +17,7 @@ set_target_properties(staticThreadBlinker PROPERTIES
 		CXX_STANDARD 11
 		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(staticThreadBlinker PRIVATE
-		distortos::distortos
-		distortos::allCxxFlags)
+		distortos::distortos)
 distortosTargetLinkerScripts(staticThreadBlinker $ENV{DISTORTOS_LINKER_SCRIPT})
 
 distortosBin(staticThreadBlinker staticThreadBlinker.bin)
