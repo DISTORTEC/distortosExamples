@@ -11,6 +11,11 @@
 dist: trusty
 sudo: false
 
+addons:
+    apt:
+        packages:
+            - ninja-build
+
 # use minimal environment
 language: generic
 

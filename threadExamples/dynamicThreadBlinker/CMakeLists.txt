@@ -13,12 +13,8 @@
 
 add_executable(dynamicThreadBlinker
 		dynamicThreadBlinker.cpp)
-set_target_properties(dynamicThreadBlinker PROPERTIES
-		CXX_STANDARD 11
-		CXX_STANDARD_REQUIRED ON)
 target_link_libraries(dynamicThreadBlinker PRIVATE
-		distortos::distortos
-		distortos::allCxxFlags)
+		distortos::distortos)
 distortosTargetLinkerScripts(dynamicThreadBlinker $ENV{DISTORTOS_LINKER_SCRIPT})
 
 distortosBin(dynamicThreadBlinker dynamicThreadBlinker.bin)
