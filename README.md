@@ -6,75 +6,69 @@ Examples for [distortos](http://distortos.org/) - object-oriented C++ RTOS for m
 Configuration & building
 ------------------------
 
-1. Download
-[source package with examples](https://github.com/DISTORTEC/distortosExamples/archive/master.zip) and extract it;
-2. Download [source package of distortos](https://github.com/DISTORTEC/distortos/archive/master.zip) and extract it
-somewhere inside examples;
-3. Configure path to sources of *distortos* in `DISTORTOS_PATH` variable in top-level `Makefile`; You can skip this step
-if this path is `distortos/`, as this is the default value;
-4. Configure distortos - you can either create new configuration (with `make menuconfig`) or use an existing one;
-5. Execute `make configure CONFIG_PATH=<path-to-distortosConfiguration.mk>` to select the configuration you
-created/chose above;
-6. Execute `make`;
+To configure & build *distortosExamples* you need:
+- [CMake](https://cmake.org/) (version 3.7 or later);
+- [a build tool supported by CMake](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html#manual:cmake-generators(7)) -
+it is highly recommended to use [Ninja](https://ninja-build.org/);
+- [arm-none-eabi bleeding-edge-toolchain](https://github.com/FreddieChopin/bleeding-edge-toolchain) (*GCC* version 5 or
+later);
 
-Alternatively you can replace steps 1 and 2 with just
-`git clone --recursive https://github.com/DISTORTEC/distortosExamples`. In such scenario you can also skip
-step 3. To update *distortos* submodule to latest version use `git submodule update --remote` command.
+Build infrastructure of *distortos* tries to follow typical *CMake* cross-compiling workflow, which means that you
+always have to use a so-called *toolchain file*. Toolchain files in *distortos* also serve another purpose - they select
+the board which is going to be used by your application.
 
-If you downloaded versioned source package from [distortos.org](http://distortos.org/), then you may skip first three
-steps - releases already contain sources of *distortos* in default path.
+1. Download source package of *distortosExamples* in
+[zip](https://github.com/DISTORTEC/distortosExamples/archive/master.zip) or
+[tar.gz](https://github.com/DISTORTEC/distortosExamples/archive/master.tar.gz) format and extract it;
+2. Download source package of *distortos* in [zip](https://github.com/DISTORTEC/distortos/archive/master.zip) or
+[tar.gz](https://github.com/DISTORTEC/distortos/archive/master.tar.gz) format and extract it inside
+*distortosExamples* extracted in step 1, for example to `distortos/`;
+3. Adjust relative path to *distortos* in `add_subdirectory(<path-to-distortos>)` from top-level `CMakeLists.txt`;
+4. Create a build folder, for example `output`;
+5. From within the build folder, initialize it with *CMake*, for example with
+`cmake .. -DCMAKE_TOOLCHAIN_FILE=../distortos/source/board/ST_STM32F4DISCOVERY/Toolchain-ST_STM32F4DISCOVERY.cmake -GNinja`
+if you want a default configuration or
+`cmake -C../configurations/ST_STM32F4DISCOVERY/distortosConfiguration.cmake .. -GNinja` if you want to start from a
+saved configuration;
+6. Edit *distortos* configuration with a tool of your choice, for example `cmake-gui ..` (a GUI application) or
+`ccmake ..` (*curses*-based application);
+7. Execute selected build tool, for example `ninja` or `ninja -v` if you want to see all command lines while building;
 
-### Quick example
+You can obviously replace steps 1-3 with
+`git clone --recursive https://github.com/DISTORTEC/distortosExamples`.
 
-Following commands may be executed in POSIX-compatible shell (e.g. *Bash*).
+Steps 4-6 can be all done from within `cmake-gui`. After starting the application use *Browse Source...* button to
+select the folder with *distortosExamples* and *Browse Build...* button to select the build folder. Then click
+on *Configure* button. In the *CMakeSetup* window which appears select the generator of your choice and make sure that
+*Specify toolchain file for cross-compiling* is selected before going any further. Click *Next* and specify the
+toolchain file (which also selects the board), for example
+`<source-folder>/distortos/source/board/ST_STM32F4DISCOVERY/Toolchain-ST_STM32F4DISCOVERY.cmake` and click *Finish*
+button.
 
-#### 1. Download
+### tl;dr
 
-Download and extract latest examples with latest *distortos*:
-
-    $ wget https://github.com/DISTORTEC/distortosExamples/archive/master.zip -O distortosExamples-master.zip
-    $ unzip -q distortosExamples-master.zip
-    $ wget https://github.com/DISTORTEC/distortos/archive/master.zip -O distortos-master.zip
-    $ unzip -q distortos-master.zip -d distortosExamples-master
+    $ wget https://github.com/DISTORTEC/distortosExamples/archive/master.tar.gz -O distortosExamples-master.tar.gz
+    $ tar -xf distortosExamples-master.tar.gz
+    $ wget https://github.com/DISTORTEC/distortos/archive/master.tar.gz -O distortos-master.tar.gz
+    $ tar -xf distortos-master.tar.gz
+    $ mv -T distortos-master/ distortosExamples-master/distortos/
     $ cd distortosExamples-master
-    $ mv -T distortos-master/ distortos/
+    $ mkdir output
+    $ cd output
+    $ cmake .. -DCMAKE_TOOLCHAIN_FILE=../distortos/source/board/ST_STM32F4DISCOVERY/Toolchain-ST_STM32F4DISCOVERY.cmake -GNinja
+    $ cmake-gui ..
+    $ ninja
 
-or clone the repository:
+or
 
-    $ git clone --recursive https://github.com/DISTORTEC/distortosExamples
-    $ cd distortosExamples
-
-or download and extract latest released project template:
-
-    $ wget http://distortos.org/files/distortosExamples-20180701.tar.xz
-    $ tar -xf distortosExamples-20180701.tar.xz
-    $ cd distortosExamples-20180701
-
-#### 2. Configure
-
-Either use one of existing configurations:
-
-    $ make configure CONFIG_PATH=configurations/ST_STM32F4DISCOVERY
-
-or create a new one from scratch:
-
-    $ make menuconfig
-    ... edit some options, save the configuration as distortosConfiguration.mk ...
-    $ make configure
-
-#### 3. Build
-
-Build the project with *make*:
-
-    $ make
-
-#### 4. Edit configuration & rebuild
-
-To edit any option in the selected configuration just run *kconfig* tool again:
-
-    $ make menuconfig
-    ... edit some options, overwrite configuration file ...
-
-You can rebuild the project immediatelly by running *make*:
-
-    $ make
+    $ wget https://github.com/DISTORTEC/distortosExamples/archive/master.tar.gz -O distortosExamples-master.tar.gz
+    $ tar -xf distortosExamples-master.tar.gz
+    $ wget https://github.com/DISTORTEC/distortos/archive/master.tar.gz -O distortos-master.tar.gz
+    $ tar -xf distortos-master.tar.gz
+    $ mv -T distortos-master/ distortosExamples-master/distortos/
+    $ cd distortosExamples-master
+    $ mkdir output
+    $ cd output
+    $ cmake -C../configurations/ST_STM32F4DISCOVERY/distortosConfiguration.cmake .. -GNinja
+    $ cmake-gui ..
+    $ ninja
