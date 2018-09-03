@@ -12,6 +12,11 @@ All notable changes to this project will be documented in this file.
 or any shell tools - just *CMake* (version 3.7 or later), build tool (it is recommended to use *Ninja*) and
 *arm-none-eabi bleeding-edge-toolchain* (*GCC* version 5 or later). Check `README.md` for more details about usage.
 
+### Removed
+
+- Removed support for configuring with *Kconfig* and building with *make*. Both of these tasks are now handled by
+*CMake*.
+
 [20180701](https://github.com/DISTORTEC/distortosExamples/compare/v20170914...v20180701) - 2018-07-01
 -----------------------------------------------------------------------------------------------------
 
