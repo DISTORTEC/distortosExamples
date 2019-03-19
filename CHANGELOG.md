@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 [Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20180701...HEAD)
 -------------------------------------------------------------------------------------
 
+### Added
+
+- Configurations for [32F072BDISCOVERY](https://www.st.com/en/evaluation-tools/32f072bdiscovery.html) board with
+*STM32F0* chip.
+
 ### Changed
 
 - Implemended full support for configuring and building with *CMake*. The new *CMake* workflow does not need *Kconfig*
