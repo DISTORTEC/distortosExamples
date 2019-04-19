@@ -2,7 +2,7 @@
  * \file
  * \brief staticThreadBlinker example application
  *
- * \author Copyright (C) 2016-2017 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
+ * \author Copyright (C) 2016-2019 Kamil Szczygiel http://www.distortec.com http://www.freddiechopin.info
  *
  * \par License
  * This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not
@@ -11,13 +11,13 @@
 
 #include "distortos/distortosConfiguration.h"
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE)
+#if defined(DISTORTOS_BOARD_LEDS_ENABLE)
 
 #include "distortos/board/leds.hpp"
 
 #include "distortos/chip/ChipOutputPin.hpp"
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
+#endif	// defined(DISTORTOS_BOARD_LEDS_ENABLE)
 
 #include "distortos/StaticThread.hpp"
 #include "distortos/ThisThread.hpp"
@@ -29,7 +29,7 @@ namespace
 | local functions
 +---------------------------------------------------------------------------------------------------------------------*/
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE)
+#if defined(DISTORTOS_BOARD_LEDS_ENABLE)
 
 /**
  * \brief LED blinking function
@@ -49,7 +49,7 @@ void ledBlinkerFunction(distortos::devices::OutputPin& led, const std::chrono::m
 	}
 }
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE)
+#endif	// defined(DISTORTOS_BOARD_LEDS_ENABLE)
 
 /**
  * \brief Boolean variable "blinking" function
@@ -106,7 +106,7 @@ int main()
 	auto variableBlinkerThread = distortos::makeAndStartStaticThread<1024>(1, variableBlinkerFunction,
 			std::ref(variable), std::chrono::milliseconds{401});
 
-#if defined(CONFIG_BOARD_LEDS_ENABLE) && DISTORTOS_BOARD_LEDS_COUNT >= 1
+#if defined(DISTORTOS_BOARD_LEDS_ENABLE) && DISTORTOS_BOARD_LEDS_COUNT >= 1
 
 	// create and immediately start static thread with 1024 bytes of stack, low priority (1), ledBlinkerFunction() will
 	// get its own LED by reference and period by value
@@ -142,7 +142,7 @@ int main()
 
 	ledBlinkerThread0.join();
 
-#endif	// defined(CONFIG_BOARD_LEDS_ENABLE) && DISTORTOS_BOARD_LEDS_COUNT >= 1
+#endif	// defined(DISTORTOS_BOARD_LEDS_ENABLE) && DISTORTOS_BOARD_LEDS_COUNT >= 1
 
 	variableBlinkerThread.join();
 

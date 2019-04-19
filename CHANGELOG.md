@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 - Implemended full support for configuring and building with *CMake*. The new *CMake* workflow does not need *Kconfig*
 or any shell tools - just *CMake* (version 3.7 or later), build tool (it is recommended to use *Ninja*) and
 *arm-none-eabi bleeding-edge-toolchain* (*GCC* version 5 or later). Check `README.md` for more details about usage.
+- Replace all uses of `CONFIG_BOARD_LEDS_ENABLE` macro with `DISTORTOS_BOARD_LEDS_ENABLE`.
 
 ### Removed
 
