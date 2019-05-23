@@ -3,6 +3,14 @@ Change Log
 
 All notable changes to this project will be documented in this file.
 
+[Unreleased](https://github.com/DISTORTEC/distortosExamples/compare/v20190505...HEAD)
+-------------------------------------------------------------------------------------
+
+### Added
+
+- Configuration for [NUCLEO-F767ZI](https://www.st.com/en/evaluation-tools/nucleo-f767zi.html) board with *STM32F7*
+chip.
+
 [20190505](https://github.com/DISTORTEC/distortosExamples/compare/v20180701...v20190505) - 2019-05-05
 -----------------------------------------------------------------------------------------------------
 
